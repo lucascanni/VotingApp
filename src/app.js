@@ -86,6 +86,7 @@ App = {
   },
 
   createProposal: async () => {
+    if(App.loading) return
     App.setLoading(true)
     const $submitButton = $('#newProposal button[type="submit"]')
     $submitButton.prop('disabled', true)
@@ -95,6 +96,7 @@ App = {
   },
 
   castVote: async (proposalId) => { 
+    if(App.loading) return
     App.setLoading(true)
     await App.voting.vote(proposalId, { from: App.account })
     window.location.reload()
